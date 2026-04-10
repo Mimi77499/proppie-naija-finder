@@ -16,9 +16,9 @@ export default function Footer() {
           <div>
             <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-secondary-foreground/50">Properties</h4>
             <div className="space-y-2 text-sm">
-              <Link to="/?type=sale" className="block text-secondary-foreground/70 hover:text-secondary-foreground">Buy</Link>
-              <Link to="/?type=rent" className="block text-secondary-foreground/70 hover:text-secondary-foreground">Rent</Link>
-              <Link to="/?type=shortlet" className="block text-secondary-foreground/70 hover:text-secondary-foreground">Short Lease</Link>
+              <Link to="/properties?type=sale" className="block text-secondary-foreground/70 hover:text-secondary-foreground">Buy</Link>
+              <Link to="/properties?type=rent" className="block text-secondary-foreground/70 hover:text-secondary-foreground">Rent</Link>
+              <Link to="/properties?type=shortlet" className="block text-secondary-foreground/70 hover:text-secondary-foreground">Short Lease</Link>
             </div>
           </div>
           <div>
