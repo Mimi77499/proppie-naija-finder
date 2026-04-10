@@ -1,0 +1,265 @@
+export interface Property {
+  id: string;
+  title: string;
+  price: string;
+  priceNumeric: number;
+  location: string;
+  city: string;
+  state: string;
+  bedrooms: number;
+  bathrooms: number;
+  sqft: string;
+  type: "sale" | "rent" | "shortlet";
+  status: "new" | "hot" | "reduced" | "featured";
+  statusLabel: string;
+  images: string[];
+  description: string;
+  features: string[];
+  yearBuilt: string;
+  propertyType: string;
+  agent: {
+    name: string;
+    phone: string;
+    email: string;
+  };
+}
+
+export const properties: Property[] = [
+  {
+    id: "1",
+    title: "Luxury 5 Bedroom Detached Duplex",
+    price: "₦120,000,000",
+    priceNumeric: 120000000,
+    location: "Lekki Phase 1",
+    city: "Lagos",
+    state: "Lagos",
+    bedrooms: 5,
+    bathrooms: 6,
+    sqft: "450 sqm",
+    type: "sale",
+    status: "hot",
+    statusLabel: "Hot Deal",
+    images: [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    ],
+    description: "A stunning 5 bedroom fully detached duplex with modern finishing, located in the heart of Lekki Phase 1. Features include a spacious living area, fitted kitchen, boys quarter, swimming pool, and 24/7 security.",
+    features: ["Swimming Pool", "Boys Quarter", "Fitted Kitchen", "CCTV", "24/7 Security", "Parking for 4 Cars", "Generator House", "Water Treatment"],
+    yearBuilt: "2023",
+    propertyType: "Detached Duplex",
+    agent: { name: "Adebayo Johnson", phone: "+234 703 135 8061", email: "support@proppie.net" },
+  },
+  {
+    id: "2",
+    title: "3 Bedroom Apartment with Ocean View",
+    price: "₦85,000,000",
+    priceNumeric: 85000000,
+    location: "Victoria Island",
+    city: "Lagos",
+    state: "Lagos",
+    bedrooms: 3,
+    bathrooms: 4,
+    sqft: "200 sqm",
+    type: "sale",
+    status: "new",
+    statusLabel: "Newly Listed",
+    images: [
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&q=80",
+    ],
+    description: "Exquisite 3 bedroom apartment with breathtaking ocean views in Victoria Island. Features modern interior design, premium finishes, smart home technology, and access to shared facilities.",
+    features: ["Ocean View", "Smart Home", "Gym Access", "Concierge Service", "Underground Parking", "Elevator"],
+    yearBuilt: "2024",
+    propertyType: "Apartment",
+    agent: { name: "Chioma Nwankwo", phone: "+234 703 135 8061", email: "support@proppie.net" },
+  },
+  {
+    id: "3",
+    title: "4 Bedroom Semi-Detached Duplex",
+    price: "₦3,500,000/yr",
+    priceNumeric: 3500000,
+    location: "Ikeja GRA",
+    city: "Lagos",
+    state: "Lagos",
+    bedrooms: 4,
+    bathrooms: 5,
+    sqft: "350 sqm",
+    type: "rent",
+    status: "featured",
+    statusLabel: "Featured",
+    images: [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+    ],
+    description: "Spacious 4 bedroom semi-detached duplex available for rent in the serene Ikeja GRA. Comes with boys quarter, ample parking, well-maintained garden, and 24/7 estate security.",
+    features: ["Boys Quarter", "Garden", "Parking for 3 Cars", "Estate Security", "Prepaid Meter", "Water Borehole"],
+    yearBuilt: "2021",
+    propertyType: "Semi-Detached Duplex",
+    agent: { name: "Emeka Obi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+  },
+  {
+    id: "4",
+    title: "2 Bedroom Furnished Shortlet",
+    price: "₦150,000/night",
+    priceNumeric: 150000,
+    location: "Ikoyi",
+    city: "Lagos",
+    state: "Lagos",
+    bedrooms: 2,
+    bathrooms: 2,
+    sqft: "120 sqm",
+    type: "shortlet",
+    status: "hot",
+    statusLabel: "Hot Deal",
+    images: [
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&q=80",
+    ],
+    description: "Beautifully furnished 2 bedroom shortlet apartment in the exclusive Ikoyi area. Perfect for business travelers and vacationers. Fully serviced with WiFi, Netflix, and housekeeping.",
+    features: ["Fully Furnished", "WiFi", "Netflix", "Housekeeping", "Swimming Pool", "24/7 Power"],
+    yearBuilt: "2022",
+    propertyType: "Apartment",
+    agent: { name: "Funmi Adeyemi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+  },
+  {
+    id: "5",
+    title: "6 Bedroom Mansion with Pool",
+    price: "₦250,000,000",
+    priceNumeric: 250000000,
+    location: "Banana Island",
+    city: "Lagos",
+    state: "Lagos",
+    bedrooms: 6,
+    bathrooms: 7,
+    sqft: "800 sqm",
+    type: "sale",
+    status: "featured",
+    statusLabel: "Premium",
+    images: [
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
+    ],
+    description: "Magnificent 6 bedroom mansion on the prestigious Banana Island. Features include infinity pool, home cinema, wine cellar, smart home automation, and waterfront views.",
+    features: ["Infinity Pool", "Home Cinema", "Wine Cellar", "Smart Home", "Waterfront View", "Tennis Court", "Staff Quarters", "Elevator"],
+    yearBuilt: "2024",
+    propertyType: "Mansion",
+    agent: { name: "Adebayo Johnson", phone: "+234 703 135 8061", email: "support@proppie.net" },
+  },
+  {
+    id: "6",
+    title: "3 Bedroom Terrace House",
+    price: "₦2,000,000/yr",
+    priceNumeric: 2000000,
+    location: "Ajah",
+    city: "Lagos",
+    state: "Lagos",
+    bedrooms: 3,
+    bathrooms: 3,
+    sqft: "180 sqm",
+    type: "rent",
+    status: "new",
+    statusLabel: "Just In",
+    images: [
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+    ],
+    description: "Affordable 3 bedroom terrace house in a gated estate in Ajah. Features modern finishes, prepaid meter, water treatment, and secure estate with recreational facilities.",
+    features: ["Gated Estate", "Prepaid Meter", "Water Treatment", "Playground", "24/7 Security"],
+    yearBuilt: "2022",
+    propertyType: "Terrace",
+    agent: { name: "Chioma Nwankwo", phone: "+234 703 135 8061", email: "support@proppie.net" },
+  },
+  {
+    id: "7",
+    title: "1 Bedroom Studio Shortlet",
+    price: "₦80,000/night",
+    priceNumeric: 80000,
+    location: "Lekki Phase 1",
+    city: "Lagos",
+    state: "Lagos",
+    bedrooms: 1,
+    bathrooms: 1,
+    sqft: "65 sqm",
+    type: "shortlet",
+    status: "new",
+    statusLabel: "New",
+    images: [
+      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&q=80",
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+    ],
+    description: "Cozy and stylish studio apartment perfect for short stays in Lekki. Fully furnished with modern amenities, high-speed WiFi, and access to gym and pool.",
+    features: ["Fully Furnished", "WiFi", "Gym", "Pool Access", "24/7 Power", "Housekeeping"],
+    yearBuilt: "2023",
+    propertyType: "Studio",
+    agent: { name: "Funmi Adeyemi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+  },
+  {
+    id: "8",
+    title: "5 Bedroom Detached House",
+    price: "₦95,000,000",
+    priceNumeric: 95000000,
+    location: "Maitama",
+    city: "Abuja",
+    state: "FCT",
+    bedrooms: 5,
+    bathrooms: 6,
+    sqft: "500 sqm",
+    type: "sale",
+    status: "reduced",
+    statusLabel: "Price Reduced",
+    images: [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
+    ],
+    description: "Elegant 5 bedroom detached house in the prime Maitama district of Abuja. Spacious compound with beautiful landscaping, staff quarters, and modern amenities throughout.",
+    features: ["Staff Quarters", "Landscaped Garden", "Parking for 5 Cars", "Backup Generator", "Borehole", "CCTV"],
+    yearBuilt: "2020",
+    propertyType: "Detached House",
+    agent: { name: "Emeka Obi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+  },
+  {
+    id: "9",
+    title: "4 Bedroom Penthouse",
+    price: "₦5,000,000/yr",
+    priceNumeric: 5000000,
+    location: "Eko Atlantic",
+    city: "Lagos",
+    state: "Lagos",
+    bedrooms: 4,
+    bathrooms: 5,
+    sqft: "300 sqm",
+    type: "rent",
+    status: "featured",
+    statusLabel: "Premium Listing",
+    images: [
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+    ],
+    description: "Ultra-luxury penthouse at Eko Atlantic with panoramic views of the Atlantic Ocean. Features include private terrace, rooftop garden, concierge services, and state-of-the-art facilities.",
+    features: ["Ocean View", "Private Terrace", "Rooftop Garden", "Concierge", "Smart Home", "Elevator", "Wine Cellar"],
+    yearBuilt: "2024",
+    propertyType: "Penthouse",
+    agent: { name: "Adebayo Johnson", phone: "+234 703 135 8061", email: "support@proppie.net" },
+  },
+];
+
+export const nigerianStates = [
+  "Lagos", "Abuja (FCT)", "Rivers", "Ogun", "Oyo", "Kano", "Kaduna", "Enugu", "Delta", "Anambra",
+  "Edo", "Cross River", "Akwa Ibom", "Imo", "Abia", "Kwara", "Osun", "Ondo", "Ekiti", "Bayelsa",
+];
+
+export const popularAreas = [
+  "Lekki", "Victoria Island", "Ikoyi", "Ikeja", "Ajah", "Banana Island", "Maitama", "Asokoro",
+  "Wuse", "Garki", "Port Harcourt", "Eko Atlantic", "Surulere", "Yaba", "Magodo",
+];
