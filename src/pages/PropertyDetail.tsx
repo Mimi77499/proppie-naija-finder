@@ -1,8 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
-import { Heart, Share2, MapPin, Bed, Bath, Maximize, Calendar, Phone, Mail, ChevronLeft, ChevronRight, Check } from "lucide-react";
+import {
+  Heart, Share2, MapPin, Bed, Bath, Maximize, Calendar,
+  Phone, Mail, ChevronLeft, ChevronRight, Check, Home,
+  Car, Sofa, FileText, Building, Navigation
+} from "lucide-react";
 import { properties } from "@/data/properties";
-import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -18,7 +21,7 @@ export default function PropertyDetail() {
         <div className="flex flex-1 items-center justify-center">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-foreground">Property not found</h2>
-            <Link to="/" className="mt-4 inline-block text-primary hover:underline">Back to listings</Link>
+            <Link to="/" className="mt-4 inline-block rounded-lg bg-primary px-6 py-2 text-primary-foreground hover:bg-primary/90">Back to listings</Link>
           </div>
         </div>
         <Footer />
@@ -29,9 +32,13 @@ export default function PropertyDetail() {
   const statusColors: Record<string, string> = {
     hot: "bg-destructive text-destructive-foreground",
     new: "bg-primary text-primary-foreground",
-    reduced: "bg-orange-500 text-background",
+    reduced: "bg-orange-500 text-white",
     featured: "bg-secondary text-secondary-foreground",
   };
+
+  const similarProperties = properties
+    .filter((p) => p.id !== property.id && p.type === property.type)
+    .slice(0, 3);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -42,7 +49,12 @@ export default function PropertyDetail() {
         <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
           <Link to="/" className="hover:text-foreground">Home</Link>
           <span>/</span>
-          <span className="capitalize">{property.type === "sale" ? "Buy" : property.type === "rent" ? "Rent" : "Short Lease"}</span>
+          <Link
+            to={`/properties?type=${property.type}`}
+            className="hover:text-foreground capitalize"
+          >
+            {property.type === "sale" ? "Buy" : property.type === "rent" ? "Rent" : "Short Lease"}
+          </Link>
           <span>/</span>
           <span className="text-foreground">{property.title}</span>
         </div>
@@ -59,7 +71,6 @@ export default function PropertyDetail() {
               {property.statusLabel}
             </span>
 
-            {/* Nav arrows */}
             {property.images.length > 1 && (
               <>
                 <button
@@ -77,7 +88,6 @@ export default function PropertyDetail() {
               </>
             )}
 
-            {/* Share / favorite */}
             <div className="absolute right-4 top-4 flex gap-2">
               <button className="flex h-10 w-10 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm hover:bg-background">
                 <Share2 className="h-5 w-5 text-foreground" />
@@ -87,13 +97,11 @@ export default function PropertyDetail() {
               </button>
             </div>
 
-            {/* Image counter */}
             <div className="absolute bottom-4 right-4 rounded-full bg-background/80 px-3 py-1 text-xs font-medium backdrop-blur-sm">
               {currentImage + 1} / {property.images.length}
             </div>
           </div>
 
-          {/* Thumbnails */}
           <div className="mt-2 flex gap-2 overflow-x-auto pb-2">
             {property.images.map((img, i) => (
               <button
@@ -112,8 +120,9 @@ export default function PropertyDetail() {
         {/* Content */}
         <div className="grid gap-8 lg:grid-cols-3">
           {/* Main info */}
-          <div className="lg:col-span-2">
-            <div className="mb-6">
+          <div className="lg:col-span-2 space-y-8">
+            {/* Title & Price */}
+            <div>
               <h1 className="text-2xl font-bold text-foreground md:text-3xl">{property.title}</h1>
               <div className="mt-2 flex items-center gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" />
@@ -123,10 +132,10 @@ export default function PropertyDetail() {
             </div>
 
             {/* Quick stats */}
-            <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
               {[
-                { icon: Bed, label: "Bedrooms", value: property.bedrooms },
-                { icon: Bath, label: "Bathrooms", value: property.bathrooms },
+                { icon: Bed, label: "Bedrooms", value: property.bedrooms || "N/A" },
+                { icon: Bath, label: "Bathrooms", value: property.bathrooms || "N/A" },
                 { icon: Maximize, label: "Size", value: property.sqft },
                 { icon: Calendar, label: "Year Built", value: property.yearBuilt },
               ].map(({ icon: Icon, label, value }) => (
@@ -138,69 +147,162 @@ export default function PropertyDetail() {
               ))}
             </div>
 
-            {/* Description */}
-            <div className="mb-8">
+            {/* About */}
+            <div>
               <h2 className="mb-3 text-xl font-semibold text-foreground">About This Property</h2>
               <p className="leading-relaxed text-muted-foreground">{property.description}</p>
             </div>
 
+            {/* Property Details Grid */}
+            <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+              <h2 className="mb-4 text-xl font-semibold text-foreground">Property Details</h2>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {[
+                  { icon: Home, label: "Property Type", value: property.propertyType },
+                  { icon: Building, label: "Listing Type", value: property.type === "sale" ? "For Sale" : property.type === "rent" ? "For Rent" : "Short Lease" },
+                  { icon: Calendar, label: "Year Built", value: property.yearBuilt },
+                  { icon: Maximize, label: "Size", value: property.sqft },
+                  { icon: Car, label: "Parking", value: property.parking || "Available" },
+                  { icon: Sofa, label: "Furnishing", value: property.furnishing || "Unfurnished" },
+                  { icon: FileText, label: "Title Document", value: property.titleDocument || "Contact Agent" },
+                  { icon: Navigation, label: "Service Charge", value: property.serviceCharge || "N/A" },
+                ].map(({ icon: Icon, label, value }) => (
+                  <div key={label} className="flex items-start gap-3 rounded-lg border border-border p-3">
+                    <Icon className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <div>
+                      <p className="text-xs text-muted-foreground">{label}</p>
+                      <p className="text-sm font-medium text-foreground">{value}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Features */}
-            <div className="mb-8">
+            <div>
               <h2 className="mb-3 text-xl font-semibold text-foreground">Features & Amenities</h2>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {property.features.map((f) => (
                   <div key={f} className="flex items-center gap-2 rounded-lg border border-border p-3">
-                    <Check className="h-4 w-4 text-primary" />
+                    <Check className="h-4 w-4 shrink-0 text-primary" />
                     <span className="text-sm text-foreground">{f}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Property type */}
-            <div className="rounded-xl border border-border bg-card p-6 shadow-card">
-              <h2 className="mb-3 text-xl font-semibold text-foreground">Property Details</h2>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div><span className="text-muted-foreground">Property Type:</span> <span className="font-medium text-foreground">{property.propertyType}</span></div>
-                <div><span className="text-muted-foreground">Listing Type:</span> <span className="font-medium capitalize text-foreground">{property.type === "sale" ? "For Sale" : property.type === "rent" ? "For Rent" : "Short Lease"}</span></div>
-                <div><span className="text-muted-foreground">Year Built:</span> <span className="font-medium text-foreground">{property.yearBuilt}</span></div>
-                <div><span className="text-muted-foreground">Size:</span> <span className="font-medium text-foreground">{property.sqft}</span></div>
+            {/* Neighbourhood */}
+            {property.neighborhood && (
+              <div>
+                <h2 className="mb-3 text-xl font-semibold text-foreground">About the Neighbourhood</h2>
+                <p className="mb-4 leading-relaxed text-muted-foreground">{property.neighborhood}</p>
+                {property.nearbyPlaces && property.nearbyPlaces.length > 0 && (
+                  <div>
+                    <h3 className="mb-2 text-sm font-semibold text-foreground">What's Nearby</h3>
+                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      {property.nearbyPlaces.map((place) => (
+                        <div key={place} className="flex items-center gap-2 rounded-lg border border-border p-2.5">
+                          <MapPin className="h-3.5 w-3.5 shrink-0 text-primary" />
+                          <span className="text-sm text-muted-foreground">{place}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
+            )}
+
+            {/* Similar Properties */}
+            {similarProperties.length > 0 && (
+              <div>
+                <h2 className="mb-4 text-xl font-semibold text-foreground">Similar Properties</h2>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {similarProperties.map((p) => (
+                    <Link
+                      key={p.id}
+                      to={`/property/${p.id}`}
+                      className="group overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all hover:shadow-card-hover"
+                    >
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <img src={p.images[0]} alt={p.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                      </div>
+                      <div className="p-3">
+                        <p className="font-bold text-foreground">{p.price}</p>
+                        <p className="mt-1 truncate text-sm text-foreground">{p.title}</p>
+                        <p className="text-xs text-muted-foreground">{p.location}, {p.city}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Sidebar: Agent */}
           <div>
-            <div className="sticky top-24 rounded-xl border border-border bg-card p-6 shadow-card">
-              <h3 className="mb-4 text-lg font-semibold text-foreground">Contact Agent</h3>
-              <div className="mb-4">
-                <div className="mb-1 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
-                  {property.agent.name[0]}
+            <div className="sticky top-24 space-y-6">
+              <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+                <h3 className="mb-4 text-lg font-semibold text-foreground">Contact Agent</h3>
+                <div className="mb-4">
+                  <div className="mb-1 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                    {property.agent.name[0]}
+                  </div>
+                  <p className="mt-2 font-medium text-foreground">{property.agent.name}</p>
+                  <p className="text-sm text-muted-foreground">PropPie Verified Agent</p>
                 </div>
-                <p className="mt-2 font-medium text-foreground">{property.agent.name}</p>
-                <p className="text-sm text-muted-foreground">PropPie Verified Agent</p>
+                <div className="space-y-3">
+                  <a
+                    href={`tel:${property.agent.phone}`}
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                  >
+                    <Phone className="h-4 w-4" /> Call Agent
+                  </a>
+                  <a
+                    href={`mailto:${property.agent.email}?subject=Enquiry about ${property.title}`}
+                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                  >
+                    <Mail className="h-4 w-4" /> Send Email
+                  </a>
+                  <a
+                    href={`https://wa.me/${property.agent.phone.replace(/\s|\+/g, "")}?text=I'm interested in: ${property.title}`}
+                    target="_blank"
+                    rel="noopener"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-3 text-sm font-semibold text-secondary-foreground transition-colors hover:bg-secondary/90"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
               </div>
-              <div className="space-y-3">
-                <a
-                  href={`tel:${property.agent.phone}`}
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
-                >
-                  <Phone className="h-4 w-4" /> Call Agent
-                </a>
-                <a
-                  href={`mailto:${property.agent.email}?subject=Enquiry about ${property.title}`}
-                  className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-                >
-                  <Mail className="h-4 w-4" /> Send Email
-                </a>
-                <a
-                  href={`https://wa.me/${property.agent.phone.replace(/\s|\+/g, "")}?text=I'm interested in: ${property.title}`}
-                  target="_blank"
-                  rel="noopener"
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-3 text-sm font-semibold text-secondary-foreground transition-colors hover:bg-secondary/90"
-                >
-                  WhatsApp
-                </a>
+
+              {/* Quick summary card */}
+              <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+                <h3 className="mb-3 text-sm font-semibold text-foreground">Quick Summary</h3>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Price</span>
+                    <span className="font-semibold text-foreground">{property.price}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Type</span>
+                    <span className="font-medium text-foreground">{property.propertyType}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Location</span>
+                    <span className="font-medium text-foreground">{property.location}</span>
+                  </div>
+                  {property.serviceCharge && property.serviceCharge !== "N/A" && (
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Service Charge</span>
+                      <span className="font-medium text-foreground">{property.serviceCharge}</span>
+                    </div>
+                  )}
+                  {property.titleDocument && property.titleDocument !== "N/A (Short Let)" && (
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Title</span>
+                      <span className="font-medium text-foreground">{property.titleDocument}</span>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
