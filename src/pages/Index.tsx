@@ -2,6 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import PropertyFeed from "@/components/PropertyFeed";
+import ExploreSection from "@/components/ExploreSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -14,6 +15,7 @@ const Index = () => {
       <Header />
       <HeroSection />
       <PropertyFeed searchType={type} searchQuery={query} />
+      <ExploreSection />
       <Footer />
     </div>
   );

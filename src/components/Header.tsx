@@ -1,32 +1,32 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { ChevronDown, ChevronLeft, Search, Menu, X, Phone } from "lucide-react";
+import { ChevronDown, ChevronLeft, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/proppie-logo.png";
 
 const navDropdowns = {
   Buy: [
-    { label: "Houses for Sale", href: "/?type=sale&property=house" },
-    { label: "Apartments for Sale", href: "/?type=sale&property=apartment" },
-    { label: "Land for Sale", href: "/?type=sale&property=land" },
-    { label: "Commercial Properties", href: "/?type=sale&property=commercial" },
-    { label: "New Developments", href: "/?type=sale&status=new" },
+    { label: "Houses for Sale", href: "/properties?type=sale&property=house" },
+    { label: "Apartments for Sale", href: "/properties?type=sale&property=apartment" },
+    { label: "Land for Sale", href: "/properties?type=sale&property=land" },
+    { label: "Commercial Properties", href: "/properties?type=sale&property=commercial" },
+    { label: "New Developments", href: "/properties?type=sale&status=new" },
   ],
   Sell: [
-    { label: "List Your Property", href: "/?action=list" },
-    { label: "Get a Valuation", href: "/?action=valuation" },
-    { label: "Selling Guide", href: "/?action=guide" },
+    { label: "List Your Property", href: "/properties?action=list" },
+    { label: "Get a Valuation", href: "/properties?action=valuation" },
+    { label: "Selling Guide", href: "/properties?action=guide" },
   ],
   Rent: [
-    { label: "Houses for Rent", href: "/?type=rent&property=house" },
-    { label: "Apartments for Rent", href: "/?type=rent&property=apartment" },
-    { label: "Office Spaces", href: "/?type=rent&property=office" },
-    { label: "Shops & Warehouses", href: "/?type=rent&property=commercial" },
+    { label: "Houses for Rent", href: "/properties?type=rent&property=house" },
+    { label: "Apartments for Rent", href: "/properties?type=rent&property=apartment" },
+    { label: "Office Spaces", href: "/properties?type=rent&property=office" },
+    { label: "Shops & Warehouses", href: "/properties?type=rent&property=commercial" },
   ],
   "Short Lease": [
-    { label: "Shortlet Apartments", href: "/?type=shortlet&property=apartment" },
-    { label: "Vacation Homes", href: "/?type=shortlet&property=vacation" },
-    { label: "Serviced Apartments", href: "/?type=shortlet&property=serviced" },
+    { label: "Shortlet Apartments", href: "/properties?type=shortlet&property=apartment" },
+    { label: "Vacation Homes", href: "/properties?type=shortlet&property=vacation" },
+    { label: "Serviced Apartments", href: "/properties?type=shortlet&property=serviced" },
   ],
 };
 
@@ -93,11 +93,7 @@ export default function Header() {
 
         {/* Right: CTA */}
         <div className="hidden items-center gap-3 md:flex">
-          <a href="tel:+2347031358061" className="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground">
-            <Phone className="h-4 w-4" />
-            +234 703 135 8061
-          </a>
-          <Button size="sm" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+          <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
             Join / Sign in
           </Button>
         </div>
@@ -127,10 +123,7 @@ export default function Header() {
             </div>
           ))}
           <div className="mt-4 border-t border-border pt-4">
-            <a href="tel:+2347031358061" className="mb-3 flex items-center gap-2 text-sm text-muted-foreground">
-              <Phone className="h-4 w-4" /> +234 703 135 8061
-            </a>
-            <Button className="w-full bg-secondary text-secondary-foreground">Join / Sign in</Button>
+            <Button className="w-full bg-primary text-primary-foreground">Join / Sign in</Button>
           </div>
         </div>
       )}
