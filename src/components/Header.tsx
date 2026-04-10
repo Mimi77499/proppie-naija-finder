@@ -6,27 +6,27 @@ import logo from "@/assets/proppie-logo.png";
 
 const navDropdowns = {
   Buy: [
-    { label: "Houses for Sale", href: "/?type=sale&property=house" },
-    { label: "Apartments for Sale", href: "/?type=sale&property=apartment" },
-    { label: "Land for Sale", href: "/?type=sale&property=land" },
-    { label: "Commercial Properties", href: "/?type=sale&property=commercial" },
-    { label: "New Developments", href: "/?type=sale&status=new" },
+    { label: "Houses for Sale", href: "/properties?type=sale&property=house" },
+    { label: "Apartments for Sale", href: "/properties?type=sale&property=apartment" },
+    { label: "Land for Sale", href: "/properties?type=sale&property=land" },
+    { label: "Commercial Properties", href: "/properties?type=sale&property=commercial" },
+    { label: "New Developments", href: "/properties?type=sale&status=new" },
   ],
   Sell: [
-    { label: "List Your Property", href: "/?action=list" },
-    { label: "Get a Valuation", href: "/?action=valuation" },
-    { label: "Selling Guide", href: "/?action=guide" },
+    { label: "List Your Property", href: "/properties?action=list" },
+    { label: "Get a Valuation", href: "/properties?action=valuation" },
+    { label: "Selling Guide", href: "/properties?action=guide" },
   ],
   Rent: [
-    { label: "Houses for Rent", href: "/?type=rent&property=house" },
-    { label: "Apartments for Rent", href: "/?type=rent&property=apartment" },
-    { label: "Office Spaces", href: "/?type=rent&property=office" },
-    { label: "Shops & Warehouses", href: "/?type=rent&property=commercial" },
+    { label: "Houses for Rent", href: "/properties?type=rent&property=house" },
+    { label: "Apartments for Rent", href: "/properties?type=rent&property=apartment" },
+    { label: "Office Spaces", href: "/properties?type=rent&property=office" },
+    { label: "Shops & Warehouses", href: "/properties?type=rent&property=commercial" },
   ],
   "Short Lease": [
-    { label: "Shortlet Apartments", href: "/?type=shortlet&property=apartment" },
-    { label: "Vacation Homes", href: "/?type=shortlet&property=vacation" },
-    { label: "Serviced Apartments", href: "/?type=shortlet&property=serviced" },
+    { label: "Shortlet Apartments", href: "/properties?type=shortlet&property=apartment" },
+    { label: "Vacation Homes", href: "/properties?type=shortlet&property=vacation" },
+    { label: "Serviced Apartments", href: "/properties?type=shortlet&property=serviced" },
   ],
 };
 
