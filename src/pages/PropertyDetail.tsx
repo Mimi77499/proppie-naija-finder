@@ -44,23 +44,23 @@ export default function PropertyDetail() {
     <div className="flex min-h-screen flex-col bg-background">
       <Header />
 
-      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6">
+      <main className="mx-auto w-full max-w-7xl flex-1 px-3 py-4 sm:px-4 sm:py-6">
         {/* Breadcrumb */}
-        <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
-          <Link to="/" className="hover:text-foreground">Home</Link>
-          <span>/</span>
+        <div className="mb-3 flex items-center gap-1.5 overflow-hidden text-xs text-muted-foreground sm:gap-2 sm:text-sm">
+          <Link to="/" className="shrink-0 hover:text-foreground">Home</Link>
+          <span className="shrink-0">/</span>
           <Link
             to={`/properties?type=${property.type}`}
-            className="hover:text-foreground capitalize"
+            className="shrink-0 hover:text-foreground capitalize"
           >
             {property.type === "sale" ? "Buy" : property.type === "rent" ? "Rent" : "Short Lease"}
           </Link>
-          <span>/</span>
-          <span className="text-foreground">{property.title}</span>
+          <span className="shrink-0">/</span>
+          <span className="truncate text-foreground">{property.title}</span>
         </div>
 
         {/* Image Gallery */}
-        <div className="mb-8 overflow-hidden rounded-2xl">
+        <div className="mb-6 overflow-hidden rounded-xl sm:mb-8 sm:rounded-2xl">
           <div className="relative aspect-[16/9] md:aspect-[2.2/1]">
             <img
               src={property.images[currentImage]}
@@ -118,17 +118,52 @@ export default function PropertyDetail() {
         </div>
 
         {/* Content */}
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
           {/* Main info */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="space-y-6 sm:space-y-8 lg:col-span-2">
             {/* Title & Price */}
             <div>
-              <h1 className="text-2xl font-bold text-foreground md:text-3xl">{property.title}</h1>
+              <h1 className="text-xl font-bold text-foreground sm:text-2xl md:text-3xl">{property.title}</h1>
               <div className="mt-2 flex items-center gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" />
                 <span className="text-sm">{property.location}, {property.city}, {property.state}</span>
               </div>
-              <p className="mt-3 text-3xl font-bold text-primary">{property.price}</p>
+              <p className="mt-2 text-2xl font-bold text-primary sm:mt-3 sm:text-3xl">{property.price}</p>
+
+              {/* Mobile-only agent contact */}
+              <div className="mt-4 rounded-xl border border-border bg-card p-4 shadow-card lg:hidden">
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                    {property.agent.name[0]}
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-foreground">{property.agent.name}</p>
+                    <p className="text-xs text-muted-foreground">PropPie Verified Agent</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  <a
+                    href={`tel:${property.agent.phone}`}
+                    className="flex items-center justify-center gap-1.5 rounded-lg bg-primary px-3 py-2.5 text-xs font-semibold text-primary-foreground"
+                  >
+                    <Phone className="h-3.5 w-3.5" /> Call
+                  </a>
+                  <a
+                    href={`mailto:${property.agent.email}?subject=Enquiry about ${property.title}`}
+                    className="flex items-center justify-center gap-1.5 rounded-lg border border-border bg-background px-3 py-2.5 text-xs font-semibold text-foreground"
+                  >
+                    <Mail className="h-3.5 w-3.5" /> Email
+                  </a>
+                  <a
+                    href={`https://wa.me/${property.agent.phone.replace(/\s|\+/g, "")}?text=I'm interested in: ${property.title}`}
+                    target="_blank"
+                    rel="noopener"
+                    className="flex items-center justify-center gap-1.5 rounded-lg bg-secondary px-3 py-2.5 text-xs font-semibold text-secondary-foreground"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* Quick stats */}
@@ -154,7 +189,7 @@ export default function PropertyDetail() {
             </div>
 
             {/* Property Details Grid */}
-            <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+            <div className="rounded-xl border border-border bg-card p-4 shadow-card sm:p-6">
               <h2 className="mb-4 text-xl font-semibold text-foreground">Property Details</h2>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {[
@@ -181,7 +216,7 @@ export default function PropertyDetail() {
             {/* Features */}
             <div>
               <h2 className="mb-3 text-xl font-semibold text-foreground">Features & Amenities</h2>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3">
                 {property.features.map((f) => (
                   <div key={f} className="flex items-center gap-2 rounded-lg border border-border p-3">
                     <Check className="h-4 w-4 shrink-0 text-primary" />
@@ -238,8 +273,8 @@ export default function PropertyDetail() {
             )}
           </div>
 
-          {/* Sidebar: Agent */}
-          <div>
+          {/* Sidebar: Agent - desktop only */}
+          <div className="hidden lg:block">
             <div className="sticky top-24 space-y-6">
               <div className="rounded-xl border border-border bg-card p-6 shadow-card">
                 <h3 className="mb-4 text-lg font-semibold text-foreground">Contact Agent</h3>
