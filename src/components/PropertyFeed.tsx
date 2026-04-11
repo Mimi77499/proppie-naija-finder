@@ -39,19 +39,19 @@ export default function PropertyFeed({ searchType, searchQuery }: { searchType?:
   }, [activeFilter, searchQuery]);
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-10">
+    <section className="mx-auto max-w-7xl px-3 py-8 sm:px-4 sm:py-10">
       <h2 className="mb-1 text-2xl font-bold text-foreground">Property Feed</h2>
       <p className="mb-6 text-sm text-muted-foreground">
         The most viewed and favourited homes across Nigeria
       </p>
 
       {/* Filter tabs */}
-      <div className="mb-8 flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+      <div className="mb-6 -mx-3 px-3 flex gap-2 overflow-x-auto pb-2 scrollbar-hide sm:mx-0 sm:px-0 sm:mb-8">
         {filterTabs.map((tab) => (
           <button
             key={tab.value}
             onClick={() => setActiveFilter(tab.value)}
-            className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all ${
+            className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:px-4 sm:py-2 sm:text-sm ${
               activeFilter === tab.value
                 ? "bg-secondary text-secondary-foreground shadow-sm"
                 : "border border-border bg-background text-muted-foreground hover:bg-muted"
@@ -64,7 +64,7 @@ export default function PropertyFeed({ searchType, searchQuery }: { searchType?:
 
       {/* Grid */}
       {filtered.length > 0 ? (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {filtered.map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}

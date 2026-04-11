@@ -42,13 +42,13 @@ const exploreCities = [
 
 export default function ExploreSection() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12">
+    <section className="mx-auto max-w-7xl px-3 py-8 sm:px-4 sm:py-12">
       <h2 className="mb-2 text-2xl font-bold text-foreground">Explore by Location</h2>
       <p className="mb-8 text-sm text-muted-foreground">
         Browse properties across Nigeria's top cities and neighbourhoods
       </p>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {exploreCities.map((city) => (
           <div
             key={city.name}
