@@ -11,7 +11,7 @@ const Index = () => {
   const query = searchParams.get("q") || undefined;
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex min-h-screen flex-col bg-background overflow-x-hidden">
       <Header />
       <HeroSection />
       <PropertyFeed searchType={type} searchQuery={query} />

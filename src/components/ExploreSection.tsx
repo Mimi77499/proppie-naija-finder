@@ -42,7 +42,7 @@ const exploreCities = [
 
 export default function ExploreSection() {
   return (
-    <section className="mx-auto max-w-7xl px-3 py-8 sm:px-4 sm:py-12">
+    <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-4 sm:py-12 overflow-hidden">
       <h2 className="mb-2 text-2xl font-bold text-foreground">Explore by Location</h2>
       <p className="mb-8 text-sm text-muted-foreground">
         Browse properties across Nigeria's top cities and neighbourhoods
