@@ -38,7 +38,7 @@ export default function Header() {
   const location = useLocation();
   const { user, signOut } = useAuth();
 
-  const canGoBack = location.key !== "default";
+  const canGoBack = location.key !== "default" && location.pathname !== "/";
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
