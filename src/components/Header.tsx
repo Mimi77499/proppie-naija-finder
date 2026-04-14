@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { ChevronDown, ChevronLeft, Menu, X } from "lucide-react";
+import { ChevronDown, ChevronLeft, Menu, X, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
 import logo from "@/assets/proppie-logo.png";
 
 const navDropdowns = {
@@ -35,6 +36,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { user, signOut } = useAuth();
 
   const canGoBack = location.key !== "default";
 
@@ -93,9 +95,18 @@ export default function Header() {
 
         {/* Right: CTA */}
         <div className="hidden items-center gap-3 md:flex">
-          <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-            Join / Sign in
-          </Button>
+          {user ? (
+            <>
+              <span className="truncate max-w-[140px] text-sm text-muted-foreground">{user.email}</span>
+              <Button size="sm" variant="outline" onClick={signOut}>
+                <LogOut className="mr-1.5 h-3.5 w-3.5" /> Sign Out
+              </Button>
+            </>
+          ) : (
+            <Button size="sm" asChild>
+              <Link to="/auth">Join / Sign in</Link>
+            </Button>
+          )}
         </div>
 
         {/* Mobile menu toggle */}
@@ -123,7 +134,18 @@ export default function Header() {
             </div>
           ))}
           <div className="mt-4 border-t border-border pt-4">
-            <Button className="w-full bg-primary text-primary-foreground">Join / Sign in</Button>
+            {user ? (
+              <div className="space-y-2">
+                <p className="truncate text-sm text-muted-foreground">{user.email}</p>
+                <Button variant="outline" className="w-full" onClick={() => { signOut(); setMobileMenuOpen(false); }}>
+                  <LogOut className="mr-1.5 h-4 w-4" /> Sign Out
+                </Button>
+              </div>
+            ) : (
+              <Button className="w-full" asChild onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/auth">Join / Sign in</Link>
+              </Button>
+            )}
           </div>
         </div>
       )}
