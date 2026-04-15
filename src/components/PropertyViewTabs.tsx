@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Map, StreetviewOutlined, Layers } from "lucide-react";
+import { useState } from "react";
 
 interface PropertyViewTabsProps {
   location: string;
