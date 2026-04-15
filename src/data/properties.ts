@@ -64,6 +64,8 @@ export const properties: Property[] = [
     neighborhood: "Lekki Phase 1 is one of Lagos' most sought-after residential areas, known for its serene environment, good road network, and proximity to major business districts. The area is well-planned with excellent drainage and security infrastructure.",
     nearbyPlaces: ["Lekki Conservation Centre (5 min)", "The Palms Shopping Mall (8 min)", "Chevron HQ (10 min)", "VGC (15 min)", "Lagos Business School (20 min)"],
     agent: { name: "Adebayo Johnson", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.4478, lng: 3.4723 },
+    floorPlanImage: "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?w=800&q=80",
   },
   {
     id: "2",
@@ -95,6 +97,8 @@ export const properties: Property[] = [
     neighborhood: "Victoria Island is Lagos' premier commercial and residential hub, home to embassies, multinational corporations, and upscale restaurants. It offers a vibrant lifestyle with easy access to bars, beaches, and cultural centres.",
     nearbyPlaces: ["Eko Hotel (3 min)", "Bar Beach (5 min)", "Federal Palace Hotel (7 min)", "Civic Centre (10 min)", "Lekki-Ikoyi Link Bridge (5 min)"],
     agent: { name: "Chioma Nwankwo", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.4281, lng: 3.4219 },
+    floorPlanImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80",
   },
   {
     id: "3",
@@ -126,6 +130,8 @@ export const properties: Property[] = [
     neighborhood: "Ikeja GRA is an upscale, well-planned residential area in the heart of Lagos mainland. Known for its tree-lined streets, low-density housing, and proximity to the Murtala Muhammed International Airport. It remains one of Lagos' most prestigious addresses.",
     nearbyPlaces: ["Murtala Muhammed Airport (10 min)", "Computer Village (8 min)", "Maryland Mall (12 min)", "LASUTH Hospital (5 min)", "National Stadium (15 min)"],
     agent: { name: "Emeka Obi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.5833, lng: 3.35 },
+    floorPlanImage: "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?w=800&q=80",
   },
   {
     id: "4",
@@ -157,6 +163,8 @@ export const properties: Property[] = [
     neighborhood: "Ikoyi is one of the most affluent neighborhoods in Lagos, known for its luxury high-rise apartments, embassies, and serene atmosphere along the Lagos Lagoon. It's the preferred choice for expatriates and high-net-worth individuals.",
     nearbyPlaces: ["Ikoyi Club (3 min)", "Falomo Shopping Centre (5 min)", "Lekki-Ikoyi Link Bridge (5 min)", "National Museum (10 min)", "Civic Centre (8 min)"],
     agent: { name: "Funmi Adeyemi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.45, lng: 3.4333 },
+    floorPlanImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80",
   },
   {
     id: "5",
@@ -189,6 +197,8 @@ export const properties: Property[] = [
     neighborhood: "Banana Island is Nigeria's most exclusive residential address, an artificial island in Ikoyi known for ultra-luxury mansions and waterfront properties. It offers unmatched privacy, security, and prestige.",
     nearbyPlaces: ["Ikoyi Club (8 min)", "Four Points by Sheraton (10 min)", "Victoria Island (15 min)", "Eko Atlantic (20 min)"],
     agent: { name: "Adebayo Johnson", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.456, lng: 3.45 },
+    floorPlanImage: "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?w=800&q=80",
   },
   {
     id: "6",
@@ -220,6 +230,8 @@ export const properties: Property[] = [
     neighborhood: "Ajah is a fast-developing area along the Lekki-Epe Expressway, popular with young professionals and families. It offers affordable housing options with good estate developments and improving infrastructure.",
     nearbyPlaces: ["Abraham Adesanya Roundabout (5 min)", "Novare Lekki Mall (10 min)", "Lagos Business School (15 min)", "VGC (10 min)"],
     agent: { name: "Chioma Nwankwo", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.4667, lng: 3.5833 },
+    floorPlanImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80",
   },
   {
     id: "7",
@@ -250,6 +262,8 @@ export const properties: Property[] = [
     neighborhood: "Lekki Phase 1 is a well-established residential and commercial area with excellent amenities, restaurants, and nightlife. It's centrally located with easy access to Victoria Island and Ajah.",
     nearbyPlaces: ["Lekki Phase 1 Mall (3 min)", "The Palms Mall (8 min)", "Freedom Park (5 min)", "Victoria Island (15 min)"],
     agent: { name: "Funmi Adeyemi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.4478, lng: 3.4723 },
+    floorPlanImage: "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?w=800&q=80",
   },
   {
     id: "8",
@@ -282,6 +296,8 @@ export const properties: Property[] = [
     neighborhood: "Maitama is Abuja's most prestigious residential district, home to embassies, government officials, and high-profile business leaders. It features wide, tree-lined streets and excellent infrastructure.",
     nearbyPlaces: ["Transcorp Hilton (10 min)", "National Assembly (12 min)", "Wuse Market (8 min)", "Jabi Lake Mall (15 min)", "Nnamdi Azikiwe Airport (30 min)"],
     agent: { name: "Emeka Obi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 9.0833, lng: 7.4917 },
+    floorPlanImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80",
   },
   {
     id: "9",
@@ -313,6 +329,8 @@ export const properties: Property[] = [
     neighborhood: "Eko Atlantic is Lagos' new city on the sea — a modern, planned development reclaimed from the Atlantic Ocean. It's set to become Africa's financial hub with world-class infrastructure and stunning waterfront living.",
     nearbyPlaces: ["Eko Hotel (5 min)", "Victoria Island (10 min)", "Bar Beach (3 min)", "Tarkwa Bay (boat ride)", "Lekki (20 min)"],
     agent: { name: "Adebayo Johnson", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.415, lng: 3.41 },
+    floorPlanImage: "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?w=800&q=80",
   },
   {
     id: "10",
@@ -344,6 +362,8 @@ export const properties: Property[] = [
     neighborhood: "Asokoro is one of Abuja's most exclusive districts, located close to the Presidential Villa and major government buildings. It's known for security, well-maintained roads, and upscale living.",
     nearbyPlaces: ["Aso Rock (5 min)", "National Assembly (10 min)", "Asokoro Shopping Centre (3 min)", "Transcorp Hilton (15 min)"],
     agent: { name: "Emeka Obi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 9.05, lng: 7.5167 },
+    floorPlanImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80",
   },
   {
     id: "11",
@@ -375,6 +395,8 @@ export const properties: Property[] = [
     neighborhood: "Wuse 2 is Abuja's most vibrant commercial and residential area, known for its shopping centers, nightlife, restaurants, and easy access to other parts of the city.",
     nearbyPlaces: ["Wuse Market (5 min)", "Jabi Lake Mall (10 min)", "Ceddi Plaza (3 min)", "Millennium Park (12 min)"],
     agent: { name: "Chioma Nwankwo", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 9.07, lng: 7.48 },
+    floorPlanImage: "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?w=800&q=80",
   },
   {
     id: "12",
@@ -406,6 +428,8 @@ export const properties: Property[] = [
     neighborhood: "Oniru Estate is a well-planned, secure residential area within Victoria Island. It offers a quiet, family-friendly atmosphere while being minutes away from the bustling VI commercial district.",
     nearbyPlaces: ["Oniru Beach (5 min)", "The Palms Mall (10 min)", "Victoria Island (5 min)", "Lekki Phase 1 (15 min)"],
     agent: { name: "Funmi Adeyemi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.435, lng: 3.46 },
+    floorPlanImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80",
   },
   {
     id: "13",
@@ -437,6 +461,8 @@ export const properties: Property[] = [
     neighborhood: "GRA Phase 2 is one of Port Harcourt's most desirable residential areas, known for its large plots, greenery, and proximity to major roads and amenities.",
     nearbyPlaces: ["Port Harcourt Mall (8 min)", "University of Port Harcourt (20 min)", "Aba Road (5 min)", "Port Harcourt Airport (25 min)"],
     agent: { name: "Emeka Obi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.99, lng: 3.38 },
+    floorPlanImage: "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?w=800&q=80",
   },
   {
     id: "14",
@@ -468,6 +494,8 @@ export const properties: Property[] = [
     neighborhood: "Surulere is a vibrant residential area in Lagos mainland, popular for its affordability, entertainment options, and proximity to Lagos Island via Third Mainland Bridge.",
     nearbyPlaces: ["National Stadium (5 min)", "Adeniran Ogunsanya Mall (3 min)", "Third Mainland Bridge (10 min)", "Yaba (8 min)"],
     agent: { name: "Adebayo Johnson", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.5, lng: 3.35 },
+    floorPlanImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80",
   },
   {
     id: "15",
@@ -498,6 +526,8 @@ export const properties: Property[] = [
     neighborhood: "Ibeju-Lekki is Lagos' fastest-growing investment corridor, home to the Dangote Refinery, Lekki Free Trade Zone, and the upcoming Lekki Deep Sea Port. Property values have appreciated significantly.",
     nearbyPlaces: ["Dangote Refinery (15 min)", "Lekki Free Trade Zone (10 min)", "Eleko Beach (8 min)", "Pan Atlantic University (20 min)"],
     agent: { name: "Chioma Nwankwo", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.42, lng: 3.67 },
+    floorPlanImage: "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?w=800&q=80",
   },
   {
     id: "16",
@@ -529,6 +559,8 @@ export const properties: Property[] = [
     neighborhood: "Magodo Phase 2 is a serene, well-planned residential estate in Lagos with tree-lined streets, good road infrastructure, and a family-friendly atmosphere.",
     nearbyPlaces: ["Ikeja City Mall (15 min)", "CMD Road (5 min)", "Berger (10 min)", "Lagos-Ibadan Expressway (12 min)"],
     agent: { name: "Adebayo Johnson", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.6167, lng: 3.3833 },
+    floorPlanImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80",
   },
   {
     id: "17",
@@ -560,6 +592,8 @@ export const properties: Property[] = [
     neighborhood: "Abeokuta, the capital of Ogun State, offers affordable housing with a relaxed pace of life. It's about an hour's drive from Lagos, making it ideal for those who work remotely or commute occasionally.",
     nearbyPlaces: ["Olumo Rock (10 min)", "FUNAAB (15 min)", "Abeokuta Golf Club (8 min)", "Lagos-Ibadan Expressway (20 min)"],
     agent: { name: "Emeka Obi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 7.15, lng: 3.35 },
+    floorPlanImage: "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?w=800&q=80",
   },
   {
     id: "18",
@@ -591,6 +625,8 @@ export const properties: Property[] = [
     neighborhood: "Jabi is a thriving residential and commercial area in Abuja, known for Jabi Lake and the popular Jabi Lake Mall. It offers excellent amenities and is centrally located.",
     nearbyPlaces: ["Jabi Lake Mall (3 min)", "Jabi Lake (2 min)", "Utako Market (5 min)", "Wuse 2 (8 min)"],
     agent: { name: "Funmi Adeyemi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 9.06, lng: 7.43 },
+    floorPlanImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80",
   },
   {
     id: "19",
@@ -622,6 +658,8 @@ export const properties: Property[] = [
     neighborhood: "Bodija is one of Ibadan's most sought-after residential areas, known for its spacious plots, academic institutions nearby, and comfortable living environment.",
     nearbyPlaces: ["University of Ibadan (10 min)", "Bodija Market (5 min)", "UCH (12 min)", "Dugbe (15 min)", "Lagos-Ibadan Expressway (20 min)"],
     agent: { name: "Adebayo Johnson", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 7.4167, lng: 3.9 },
+    floorPlanImage: "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?w=800&q=80",
   },
   {
     id: "20",
@@ -653,6 +691,8 @@ export const properties: Property[] = [
     neighborhood: "Independence Layout is Enugu's premium residential area with well-planned streets, good drainage, and proximity to the city centre. It is home to professionals, business owners, and government officials.",
     nearbyPlaces: ["Polo Park Mall (8 min)", "ESUT Teaching Hospital (10 min)", "Enugu City Centre (5 min)", "Akanu Ibiam Airport (20 min)"],
     agent: { name: "Emeka Obi", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.45, lng: 7.5 },
+    floorPlanImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=80",
   },
   {
     id: "21",
@@ -684,6 +724,8 @@ export const properties: Property[] = [
     neighborhood: "Yaba is Lagos' vibrant tech hub, home to numerous startups, co-working spaces, and educational institutions. It offers a youthful, energetic atmosphere with easy access to the Lagos mainland and island.",
     nearbyPlaces: ["University of Lagos (5 min)", "Yaba Tech (3 min)", "Herbert Macaulay Way (2 min)", "Third Mainland Bridge (8 min)", "Adekunle BRT (5 min)"],
     agent: { name: "Chioma Nwankwo", phone: "+234 703 135 8061", email: "support@proppie.net" },
+    coordinates: { lat: 6.52, lng: 3.38 },
+    floorPlanImage: "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?w=800&q=80",
   },
 ];
 
