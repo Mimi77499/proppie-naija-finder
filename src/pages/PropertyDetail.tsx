@@ -248,6 +248,13 @@ export default function PropertyDetail() {
               </div>
             )}
 
+            {/* Map, Street View & Floor Plan */}
+            <PropertyViewTabs
+              location={property.location}
+              city={property.city}
+              state={property.state}
+            />
+
             {/* Similar Properties */}
             {similarProperties.length > 0 && (
               <div>
