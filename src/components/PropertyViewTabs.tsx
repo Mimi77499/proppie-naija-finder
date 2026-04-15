@@ -4,14 +4,27 @@ interface PropertyViewTabsProps {
   location: string;
   city: string;
   state: string;
+  coordinates?: { lat: number; lng: number };
+  floorPlanImage?: string;
 }
 
 type ViewTab = "map" | "street" | "floor";
 
-export default function PropertyViewTabs({ location, city, state }: PropertyViewTabsProps) {
+export default function PropertyViewTabs({ location, city, state, coordinates, floorPlanImage }: PropertyViewTabsProps) {
   const [activeTab, setActiveTab] = useState<ViewTab>("map");
 
+  const lat = coordinates?.lat;
+  const lng = coordinates?.lng;
   const fullAddress = encodeURIComponent(`${location}, ${city}, ${state}, Nigeria`);
+
+  // Use coordinates for accuracy when available, fallback to address search
+  const mapSrc = lat && lng
+    ? `https://maps.google.com/maps?q=${lat},${lng}&z=15&output=embed`
+    : `https://maps.google.com/maps?q=${fullAddress}&z=15&output=embed`;
+
+  const streetSrc = lat && lng
+    ? `https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sstXGrAKxF_UcW!2m2!1d${lat}!2d${lng}!3f0!4f0!5f0.7820865974627469&layer=c`
+    : `https://www.google.com/maps?q=${fullAddress}&layer=c&output=embed`;
 
   const tabs: { id: ViewTab; label: string; icon: React.ReactNode }[] = [
     { id: "map", label: "Map View", icon: <MapIcon className="h-4 w-4" /> },
@@ -44,7 +57,7 @@ export default function PropertyViewTabs({ location, city, state }: PropertyView
         {activeTab === "map" && (
           <iframe
             title="Property Map"
-            src={`https://www.google.com/maps?q=${fullAddress}&output=embed`}
+            src={mapSrc}
             className="h-full w-full border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -53,33 +66,55 @@ export default function PropertyViewTabs({ location, city, state }: PropertyView
         )}
 
         {activeTab === "street" && (
-          <iframe
-            title="Street View"
-            src={`https://www.google.com/maps?q=${fullAddress}&layer=c&cbll=0,0&cbp=11,0,0,0,0&output=embed`}
-            className="h-full w-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
+          <div className="h-full w-full relative">
+            <iframe
+              title="Street View"
+              src={streetSrc}
+              className="h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+            {/* Link to open full street view in Google Maps */}
+            {lat && lng && (
+              <a
+                href={`https://www.google.com/maps/@${lat},${lng},3a,75y,90t/data=!3m6!1e1!3m4!1s0x0:0x0!2e0!7i13312!8i6656`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-3 right-3 rounded-lg bg-background/90 px-3 py-1.5 text-xs font-medium text-foreground shadow backdrop-blur-sm hover:bg-background transition-colors"
+              >
+                Open in Google Maps ↗
+              </a>
+            )}
+          </div>
         )}
 
         {activeTab === "floor" && (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-3 p-6 text-center">
-            <FloorIcon className="h-12 w-12 text-muted-foreground/50" />
-            <div>
-              <p className="text-sm font-medium text-foreground">Floor Plan</p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                Floor plan for this property is not yet available. Contact the agent for details.
-              </p>
-            </div>
-          </div>
+          <>
+            {floorPlanImage ? (
+              <img
+                src={floorPlanImage}
+                alt="Floor Plan"
+                className="h-full w-full object-contain bg-white p-2"
+              />
+            ) : (
+              <div className="flex h-full w-full flex-col items-center justify-center gap-3 p-6 text-center">
+                <FloorIcon className="h-12 w-12 text-muted-foreground/50" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">Floor Plan</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Floor plan for this property is not yet available. Contact the agent for details.
+                  </p>
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
   );
 }
 
-// Simple icon components using lucide-style SVGs
 function MapIcon({ className }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
