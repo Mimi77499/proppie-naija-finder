@@ -253,6 +253,8 @@ export default function PropertyDetail() {
               location={property.location}
               city={property.city}
               state={property.state}
+              coordinates={property.coordinates}
+              floorPlanImage={property.floorPlanImage}
             />
 
             {/* Similar Properties */}
