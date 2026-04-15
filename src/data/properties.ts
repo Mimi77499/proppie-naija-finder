@@ -28,6 +28,8 @@ export interface Property {
   titleDocument?: string;
   neighborhood?: string;
   nearbyPlaces?: string[];
+  coordinates?: { lat: number; lng: number };
+  floorPlanImage?: string;
 }
 
 export const properties: Property[] = [
