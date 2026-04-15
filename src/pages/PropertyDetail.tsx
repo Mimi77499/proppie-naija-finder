@@ -8,6 +8,7 @@ import {
 import { properties } from "@/data/properties";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PropertyViewTabs from "@/components/PropertyViewTabs";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -246,6 +247,13 @@ export default function PropertyDetail() {
                 )}
               </div>
             )}
+
+            {/* Map, Street View & Floor Plan */}
+            <PropertyViewTabs
+              location={property.location}
+              city={property.city}
+              state={property.state}
+            />
 
             {/* Similar Properties */}
             {similarProperties.length > 0 && (
