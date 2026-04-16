@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Eye, EyeOff } from "lucide-react";
 import logo from "@/assets/proppie-logo.png";
+import authBg from "@/assets/auth-bg.jpg";
 
 type View = "login" | "signup" | "forgot";
 
@@ -56,21 +57,40 @@ export default function Auth() {
   };
 
   const titles: Record<View, { heading: string; sub: string }> = {
-    login: { heading: "Sign in to PropPie", sub: "Enter your credentials to continue" },
-    signup: { heading: "Create your account", sub: "Sign up to start finding properties" },
-    forgot: { heading: "Reset your password", sub: "We'll send a reset link to your email" },
+    login: { heading: "Welcome Back", sub: "Sign in to continue your property search" },
+    signup: { heading: "Join PropPie", sub: "Create an account to find your dream property" },
+    forgot: { heading: "Reset Password", sub: "We'll send a reset link to your email" },
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-muted px-4">
-      <div className="w-full max-w-sm space-y-6">
-        <div className="flex flex-col items-center gap-3">
-          <Link to="/"><img src={logo} alt="PropPie" className="h-10 object-contain" /></Link>
-          <h1 className="text-xl font-bold text-foreground">{titles[view].heading}</h1>
-          <p className="text-sm text-muted-foreground">{titles[view].sub}</p>
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <img
+        src={authBg}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+        width={1920}
+        height={1080}
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-secondary/75 backdrop-blur-[2px]" />
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-md px-4 py-8">
+        <div className="flex flex-col items-center gap-4">
+          <Link to="/">
+            <img src={logo} alt="PropPie" className="h-12 object-contain drop-shadow-lg" />
+          </Link>
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-primary-foreground">{titles[view].heading}</h1>
+            <p className="mt-1 text-sm text-primary-foreground/70">{titles[view].sub}</p>
+          </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-border bg-card p-6 shadow-card">
+        <form
+          onSubmit={handleSubmit}
+          className="mt-6 space-y-4 rounded-2xl border border-primary-foreground/10 bg-background/90 p-6 shadow-elevated backdrop-blur-md"
+        >
           <div className="space-y-2">
             <label htmlFor="email" className="text-sm font-medium text-foreground">Email</label>
             <Input
@@ -120,19 +140,19 @@ export default function Auth() {
               : view === "login"
                 ? "Sign In"
                 : view === "signup"
-                  ? "Sign Up"
+                  ? "Create Account"
                   : "Send Reset Link"}
           </Button>
         </form>
 
-        <p className="text-center text-sm text-muted-foreground">
+        <p className="mt-5 text-center text-sm text-primary-foreground/80">
           {view === "login" ? (
             <>Don't have an account?{" "}
-              <button type="button" onClick={() => setView("signup")} className="font-medium text-primary hover:underline">Sign Up</button>
+              <button type="button" onClick={() => setView("signup")} className="font-semibold text-primary hover:underline">Create Account</button>
             </>
           ) : (
             <>Already have an account?{" "}
-              <button type="button" onClick={() => setView("login")} className="font-medium text-primary hover:underline">Sign In</button>
+              <button type="button" onClick={() => setView("login")} className="font-semibold text-primary hover:underline">Sign In</button>
             </>
           )}
         </p>
