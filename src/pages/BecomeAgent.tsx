@@ -83,8 +83,17 @@ export default function BecomeAgent() {
     const parsed = schema.safeParse(data);
     if (!parsed.success) return toast({ title: "Check your application", description: parsed.error.errors[0].message, variant: "destructive" });
     setSubmitting(true);
+    const p = parsed.data;
     const { error } = await supabase.from("agent_applications").insert({
-      user_id: user.id, ...parsed.data,
+      user_id: user.id,
+      full_name: p.full_name,
+      email: p.email,
+      phone: p.phone,
+      agency_name: p.agency_name || null,
+      license_number: p.license_number || null,
+      years_experience: p.years_experience ?? null,
+      bio: p.bio,
+      service_areas: p.service_areas,
     });
     setSubmitting(false);
     if (error) return toast({ title: "Submission failed", description: error.message, variant: "destructive" });
