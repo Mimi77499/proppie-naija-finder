@@ -99,12 +99,8 @@ export default function PropertyDetail() {
             )}
 
             <div className="absolute right-4 top-4 flex gap-2">
-              <button className="flex h-10 w-10 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm hover:bg-background">
-                <Share2 className="h-5 w-5 text-foreground" />
-              </button>
-              <button className="flex h-10 w-10 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm hover:bg-background">
-                <Heart className="h-5 w-5 text-foreground" />
-              </button>
+              <ShareButton title={property.title} />
+              <SaveButton propertyId={property.id} />
             </div>
 
             <div className="absolute bottom-4 right-4 rounded-full bg-background/80 px-3 py-1 text-xs font-medium backdrop-blur-sm">
