@@ -1,19 +1,28 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import {
-  Heart, Share2, MapPin, Bed, Bath, Maximize, Calendar,
+  MapPin, Bed, Bath, Maximize, Calendar,
   Phone, Mail, ChevronLeft, ChevronRight, Check, Home,
-  Car, Sofa, FileText, Building, Navigation
+  Car, Sofa, FileText, Building, Navigation, CalendarCheck, FileSignature
 } from "lucide-react";
 import { properties } from "@/data/properties";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyViewTabs from "@/components/PropertyViewTabs";
+import SaveButton from "@/components/property/SaveButton";
+import ShareButton from "@/components/property/ShareButton";
+import RequestTourModal from "@/components/property/RequestTourModal";
+import StartOfferModal from "@/components/property/StartOfferModal";
+import MortgageEstimator from "@/components/property/MortgageEstimator";
+import PriceHistory from "@/components/property/PriceHistory";
+import { Button } from "@/components/ui/button";
 
 export default function PropertyDetail() {
   const { id } = useParams();
   const property = properties.find((p) => p.id === id);
   const [currentImage, setCurrentImage] = useState(0);
+  const [tourOpen, setTourOpen] = useState(false);
+  const [offerOpen, setOfferOpen] = useState(false);
 
   if (!property) {
     return (
@@ -90,12 +99,8 @@ export default function PropertyDetail() {
             )}
 
             <div className="absolute right-4 top-4 flex gap-2">
-              <button className="flex h-10 w-10 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm hover:bg-background">
-                <Share2 className="h-5 w-5 text-foreground" />
-              </button>
-              <button className="flex h-10 w-10 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm hover:bg-background">
-                <Heart className="h-5 w-5 text-foreground" />
-              </button>
+              <ShareButton title={property.title} />
+              <SaveButton propertyId={property.id} />
             </div>
 
             <div className="absolute bottom-4 right-4 rounded-full bg-background/80 px-3 py-1 text-xs font-medium backdrop-blur-sm">
@@ -130,6 +135,18 @@ export default function PropertyDetail() {
                 <span className="text-sm">{property.location}, {property.city}, {property.state}</span>
               </div>
               <p className="mt-2 text-2xl font-bold text-primary sm:mt-3 sm:text-3xl">{property.price}</p>
+
+              {/* Tour & Offer actions */}
+              <div className="mt-4 grid grid-cols-2 gap-2">
+                <Button onClick={() => setTourOpen(true)} variant="outline" className="w-full">
+                  <CalendarCheck className="mr-1.5 h-4 w-4" /> Request a tour
+                </Button>
+                {property.type === "sale" && (
+                  <Button onClick={() => setOfferOpen(true)} className="w-full">
+                    <FileSignature className="mr-1.5 h-4 w-4" /> Start an offer
+                  </Button>
+                )}
+              </div>
 
               {/* Mobile-only agent contact */}
               <div className="mt-4 rounded-xl border border-border bg-card p-4 shadow-card lg:hidden">
@@ -257,6 +274,12 @@ export default function PropertyDetail() {
               floorPlanImage={property.floorPlanImage}
             />
 
+            {/* Price History */}
+            <PriceHistory price={property.priceNumeric} status={property.status} yearBuilt={property.yearBuilt} />
+
+            {/* Mortgage Estimator */}
+            {property.type === "sale" && <MortgageEstimator price={property.priceNumeric} />}
+
             {/* Similar Properties */}
             {similarProperties.length > 0 && (
               <div>
@@ -355,6 +378,20 @@ export default function PropertyDetail() {
       </main>
 
       <Footer />
+
+      <RequestTourModal
+        propertyId={property.id}
+        propertyTitle={property.title}
+        open={tourOpen}
+        onClose={() => setTourOpen(false)}
+      />
+      <StartOfferModal
+        propertyId={property.id}
+        propertyTitle={property.title}
+        listPrice={property.priceNumeric}
+        open={offerOpen}
+        onClose={() => setOfferOpen(false)}
+      />
     </div>
   );
 }
