@@ -1,19 +1,28 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import {
-  Heart, Share2, MapPin, Bed, Bath, Maximize, Calendar,
+  MapPin, Bed, Bath, Maximize, Calendar,
   Phone, Mail, ChevronLeft, ChevronRight, Check, Home,
-  Car, Sofa, FileText, Building, Navigation
+  Car, Sofa, FileText, Building, Navigation, CalendarCheck, FileSignature
 } from "lucide-react";
 import { properties } from "@/data/properties";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyViewTabs from "@/components/PropertyViewTabs";
+import SaveButton from "@/components/property/SaveButton";
+import ShareButton from "@/components/property/ShareButton";
+import RequestTourModal from "@/components/property/RequestTourModal";
+import StartOfferModal from "@/components/property/StartOfferModal";
+import MortgageEstimator from "@/components/property/MortgageEstimator";
+import PriceHistory from "@/components/property/PriceHistory";
+import { Button } from "@/components/ui/button";
 
 export default function PropertyDetail() {
   const { id } = useParams();
   const property = properties.find((p) => p.id === id);
   const [currentImage, setCurrentImage] = useState(0);
+  const [tourOpen, setTourOpen] = useState(false);
+  const [offerOpen, setOfferOpen] = useState(false);
 
   if (!property) {
     return (
