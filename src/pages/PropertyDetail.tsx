@@ -378,6 +378,20 @@ export default function PropertyDetail() {
       </main>
 
       <Footer />
+
+      <RequestTourModal
+        propertyId={property.id}
+        propertyTitle={property.title}
+        open={tourOpen}
+        onClose={() => setTourOpen(false)}
+      />
+      <StartOfferModal
+        propertyId={property.id}
+        propertyTitle={property.title}
+        listPrice={property.priceNumeric}
+        open={offerOpen}
+        onClose={() => setOfferOpen(false)}
+      />
     </div>
   );
 }
