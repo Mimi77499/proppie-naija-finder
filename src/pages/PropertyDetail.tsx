@@ -136,6 +136,18 @@ export default function PropertyDetail() {
               </div>
               <p className="mt-2 text-2xl font-bold text-primary sm:mt-3 sm:text-3xl">{property.price}</p>
 
+              {/* Tour & Offer actions */}
+              <div className="mt-4 grid grid-cols-2 gap-2">
+                <Button onClick={() => setTourOpen(true)} variant="outline" className="w-full">
+                  <CalendarCheck className="mr-1.5 h-4 w-4" /> Request a tour
+                </Button>
+                {property.type === "sale" && (
+                  <Button onClick={() => setOfferOpen(true)} className="w-full">
+                    <FileSignature className="mr-1.5 h-4 w-4" /> Start an offer
+                  </Button>
+                )}
+              </div>
+
               {/* Mobile-only agent contact */}
               <div className="mt-4 rounded-xl border border-border bg-card p-4 shadow-card lg:hidden">
                 <div className="mb-3 flex items-center gap-3">
