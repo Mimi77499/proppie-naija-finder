@@ -274,6 +274,12 @@ export default function PropertyDetail() {
               floorPlanImage={property.floorPlanImage}
             />
 
+            {/* Price History */}
+            <PriceHistory price={property.priceNumeric} status={property.status} yearBuilt={property.yearBuilt} />
+
+            {/* Mortgage Estimator */}
+            {property.type === "sale" && <MortgageEstimator price={property.priceNumeric} />}
+
             {/* Similar Properties */}
             {similarProperties.length > 0 && (
               <div>
